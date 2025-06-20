@@ -1,0 +1,55 @@
+@use "../styles/mixins.scss" as mixins;
+@use "../styles/fonts.scss";
+
+.start-screen {
+  font-family: knewave, sans-serif;
+  background-color: rgb(66, 66, 66);
+  background-image: url("../../../public/img/backgrounds/wood-1716643_1920.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  @include mixins.flex-content(space-between, center, column);
+
+  > div {
+    width: 100%;
+    @include mixins.flex-content(space-between, center);
+    
+
+    > img {
+      width: 200px;
+    }
+  }
+
+  > div:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    @include mixins.flex-content(center, center, column);
+    gap: 20px;
+    background-color: #f8fcba;
+    width: auto;
+    padding: 40px 80px;
+    border-radius: 12px;
+
+    &:hover {
+        background-color: #fcffcc;
+    }
+  }
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 400;
+    margin: 0;
+}
+
+span {
+    font-size: 26px;
+}
