@@ -26,6 +26,9 @@
   }
 
   > div:nth-child(2) {
+    outline: solid 4px #FF0000;
+    border: solid 4px black;
+     box-shadow: 0 0 0 4px #FF0000 inset;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,13 +36,17 @@
     justify-content: center;
     @include mixins.flex-content(center, center, column);
     gap: 20px;
-    background-color: #f8fcba;
+    background-color: #FCFDE7;
     width: auto;
     padding: 40px 80px;
     border-radius: 12px;
 
     &:hover {
-        background-color: #fcffcc;
+        cursor: pointer;
+    }
+
+    &:hover .play-wrapper {
+            filter: brightness(120%);
     }
   }
 }
@@ -51,5 +58,19 @@ h1 {
 }
 
 span {
-    font-size: 26px;
+    font-size: 18px;
+}
+
+.play-wrapper {
+    position: relative;
+    @include mixins.flex-content();
+
+    > span {
+        font-size: 28px;
+       @include mixins.absolute-center();
+    }
+
+    > img {
+        width: 400px;
+    }
 }
