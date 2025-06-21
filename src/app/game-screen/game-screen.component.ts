@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Game } from '../models/game';
+import { OnInit } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -8,6 +10,24 @@ import { Component } from '@angular/core';
   templateUrl: './game-screen.component.html',
   styleUrl: './game-screen.component.scss'
 })
-export class GameScreenComponent {
+export class GameScreenComponent implements OnInit{
+
+
+
+  game!: Game;
+  cardTaken = false;
+
+  ngOnInit(){
+    this.newGame();
+  }
+
+  takeCard(){
+    this.cardTaken = true;
+  }
+
+  newGame(){
+    this.game = new Game();
+    console.log(this.game);
+  }
 
 }

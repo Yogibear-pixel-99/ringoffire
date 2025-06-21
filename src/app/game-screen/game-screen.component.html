@@ -1,9 +1,14 @@
-<section class="game-field">
+<section  class="game-field">
     <div>
     @for (card of [0,1,2,3,4]; track card; let i = $index){
         <img [ngStyle]="{'right.px' : i * 5, 'bottom.px' : i * 5}" src="img/cards/card_cover.png" alt="card cover">
     }
-    <img class="last-card" src="img/cards/card_cover.png" alt="card cover">
+    
+    @if (cardTaken){
+    <img class="pick-card" src="img/cards/ace_1.png" alt="card cover">
+    } @else {
+        <img (click)="takeCard()" class="last-card" src="img/cards/card_cover.png" alt="card cover">
+    }
     <!-- <img @for="let card of [1,2,3,4,5]" src="img/cards/card_cover.png" alt="card cover"> -->
     </div>
 </section>
