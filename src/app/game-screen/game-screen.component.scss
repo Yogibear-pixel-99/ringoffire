@@ -52,5 +52,12 @@
 
 60%{transform: scale(1.7);}
 
-100%{transform: scale(1.3) translate(50px, -200px) rotate(20deg);}
+100%{transform: scale(1) translate(50px, -200px) rotate(20deg);}
+}
+
+.played-card {
+      right: 25px;
+  bottom: 25px;
+//   transform: scale(1.3) translate(50px, -200px) rotate(20deg);
+  z-index: -100;
 }
