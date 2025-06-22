@@ -17,7 +17,6 @@ export class GameScreenComponent implements OnInit{
   game!: Game;
   cardTaken = false;
   currentCard: string | undefined = "";
-  cardPosition: Object = {};
 
   ngOnInit(){
     this.newGame();
@@ -31,12 +30,19 @@ export class GameScreenComponent implements OnInit{
     setTimeout(() => {
       this.cardTaken = false
       if (this.currentCard !== undefined) {
-    this.game.playedCards.push(this.currentCard);
+    this.game.playedCards.push({
+      name : this.currentCard,
+      id : this.game.playedCards.length,
+      transform: this.calculatePlayedCardPos()
+    });
+          console.log(this.currentCard);
+    console.log(this.game.playedCards);
     }
     }, 1500);
-    console.log(this.currentCard);
-    console.log(this.game.playedCards);
+
   }
+
+
 
   newGame(){
     this.game = new Game();
@@ -44,10 +50,7 @@ export class GameScreenComponent implements OnInit{
   }
 
   calculatePlayedCardPos(){
-    let rot = Math.ceil(Math.random() * 360);
-    this.cardPosition = {
-      transform: 'translate('+ (50 * 5)+'px, '+ (-200) + 'px) rotate('+(rot)+'deg)'
-    }
-  }
+   return `scale(1) translate(${this.game.playedCards.length * 2}px, -300px) rotate(${Math.ceil(Math.random() * 360)}deg)`
+}
 
 }

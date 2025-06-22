@@ -1,5 +1,5 @@
 .game-field {
-  position: relative;
+//   position: relative;
   width: 100dvw;
   height: 100dvh;
   max-width: 100%;
@@ -13,9 +13,9 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    // width: 300px;
-    // height: 500px;
+    transform: translate(-70%, -60%);
+    width: 300px;
+    height: 500px;
 
     > img {
       width: 120px;
@@ -36,11 +36,8 @@
 }
 
 .pick-card {
-//   transition: all 125ms ease-in-out;
-//   transform: scale(1.4) !important;
   right: 25px;
   bottom: 25px;
-//   transform: translate(50px, -200px) scale(1.3) rotate(20deg);
   animation: all 1250ms ease-in-out forwards;
   animation-name: pick-card-animation;
 }
@@ -52,12 +49,11 @@
 
 60%{transform: scale(1.7);}
 
-100%{transform: scale(1) translate(50px, -200px) rotate(20deg);}
+100%{transform: scale(1) translate(50px, -300px) rotate(20deg);}
 }
 
 .played-card {
       right: 25px;
   bottom: 25px;
-//   transform: scale(1.3) translate(50px, -200px) rotate(20deg);
   z-index: -100;
 }

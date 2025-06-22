@@ -8,11 +8,13 @@
   
         <img (click)="takeCard(); calculatePlayedCardPos()" class="last-card" src="img/cards/card_cover.png" alt="card cover">
       @if (cardTaken){
-    <img class="pick-card" [ngStyle]="cardPosition" src="img/cards/{{ currentCard }}.png" alt="card cover">
+    <img class="pick-card" src="img/cards/{{ currentCard }}.png" alt="card cover">
     }
 
-    @for (card of game.playedCards; track $index; let i = $index) {
-        <img class="played-card" src="img/cards/{{ card }}.png" [ngStyle]="cardPosition">
+    <!-- @if (game.playedCards.length > 0) { -->
+    @for (card of game.playedCards; track card.id; let i = $index) {
+        <img class="played-card" src="img/cards/{{ card.name }}.png" [ngStyle]="{'transform' : card.transform}">
     }
+<!-- } -->
     </div>
 </section>
