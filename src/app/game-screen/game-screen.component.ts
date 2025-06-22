@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Game } from '../models/game';
 import { OnInit } from '@angular/core';
+import { PlayerComponent } from "../player/player.component";
 
 @Component({
   standalone: true,
   selector: 'app-game-screen',
-  imports: [CommonModule],
+  imports: [CommonModule, PlayerComponent],
   templateUrl: './game-screen.component.html',
   styleUrl: './game-screen.component.scss'
 })
@@ -32,7 +33,6 @@ export class GameScreenComponent implements OnInit{
       if (this.currentCard !== undefined) {
     this.game.playedCards.push({
       name : this.currentCard,
-      id : this.game.playedCards.length,
       transform: this.calculatePlayedCardPos()
     });
           console.log(this.currentCard);

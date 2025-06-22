@@ -38,7 +38,7 @@
     gap: 20px;
     background-color: #FCFDE7;
     width: auto;
-    padding: 40px 80px;
+    padding: 20px;
     border-radius: 12px;
 
     &:hover {
@@ -73,4 +73,50 @@ span {
     > img {
         width: 400px;
     }
+}
+
+.active-players {
+    position: relative;
+    width: 300px;
+    background-color: #FCFDE7;
+    padding: 14px;
+    align-self: flex-start;
+    margin-top: 20px;
+    border-radius: 12px;
+    font-size: 20px;
+
+    > span {
+        font-size: 18px;
+    }
+
+
+}
+
+.add-button {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    background-color: #ffdbdb;
+    color: black;
+}
+
+.player-header {
+    font-size: 26px;;
+        margin-bottom: 20px;
+}
+
+input {
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    height: 40px;
+    padding: 5px 20px;
+    border: none;
+    background-color:#ffdbdb;
+    font-family: knewave, sans-serif;
+    border-radius: 12px;
+}
+
+.hidden {
+    display: none;
 }

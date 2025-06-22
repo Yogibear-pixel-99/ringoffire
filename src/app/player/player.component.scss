@@ -1,0 +1,20 @@
+@use "../styles/mixins.scss" as mixins;
+@use "../styles/fonts.scss";
+
+.player {
+    font-family: rubik, sans-serif;
+    font-size: 22px;
+    @include mixins.flex-content(space-between);
+    padding: 0 40px 0 20px;
+    background-color:rgb(252, 167, 40);
+    height: 130px;
+    width: 350px;
+    border-radius: 65px 0 0 65px;
+
+    > img {
+        height: 100px;
+        padding: 20px;
+        background-color: wheat;
+        border-radius: 50%;
+    }
+}

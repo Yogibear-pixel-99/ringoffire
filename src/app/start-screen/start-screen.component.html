@@ -6,13 +6,30 @@
   <div class="middle">
     <h1>Ring of fire</h1>
     <div class="play-wrapper">
-        <img (click) = "newGame()" src="img/buttons/button-7710125_640.png" alt="Start button">
-        <span>Play!</span>
+      <img
+        (click)="newGame()"
+        src="img/buttons/button-7710125_640.png"
+        alt="Start button"
+      />
+      <span>Play!</span>
     </div>
     <span>by Joachim Pürcher</span>
   </div>
   <div>
     <img src="img/backgrounds/playing-card-161490_1280.png" alt="Queen Card" />
+    <div class="active-players">
+      <button mat-mini-fab class="add-button" (click)="addPlayer()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <div class="player-header">Players:</div>
+  <input [ngClass]="{'hidden' : newPlayers.length === 5}" [(ngModel)]="userInput" type="text" maxlength="15" name="playerNameInput" (input)="validateName()" (focus)="emptyInput()">
+
+
+      @for (player of newPlayers; track player;) {
+      <div>{{ player }}</div>
+      }
+    </div>
     <img src="img/backgrounds/playing-card-161484_1280.png" alt="Jack Card" />
   </div>
 </section>
