@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PlayerService } from '../services/player.service';
 
 @Component({
   standalone: true,
@@ -15,11 +16,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './start-screen.component.scss',
 })
 export class StartScreenComponent {
-  newPlayers: string[] = [];
+  players: string[] = []
   userInput:string = '';
   hidden = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private playerservice: PlayerService) {
+    this.players = this.playerservice.players;
+  }
 
   newGame() {
     this.router.navigate(['/game']);
@@ -31,11 +34,13 @@ export class StartScreenComponent {
   }
 
   addPlayer(){
-    console.log(this.checkIfPlayerExists())
+    if (this.playerservice.players.length > 5 || this.userInput.length === 0) return;
 
-    if (this.newPlayers.length < 5) {
+
+
+    if (this.playerservice.players.length < 5) {
       if (!this.checkIfPlayerExists()) {
-    this.newPlayers.push(this.userInput.trim());
+    this.playerservice.players.push(this.userInput.trim());
     this.emptyInput();
       } else {
         this.userInput = 'Player already exists';
@@ -43,10 +48,11 @@ export class StartScreenComponent {
     } else {
       this.userInput = 'Maximum of players reached!';
     }
+    console.log(this.playerservice);
   }
 
   checkIfPlayerExists(){
-    return this.newPlayers.some((name) => this.userInput === name);
+    return this.playerservice.players.some((name: string) => this.userInput === name);
 }
 
 emptyInput(){

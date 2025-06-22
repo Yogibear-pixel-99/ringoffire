@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Game } from '../models/game';
 import { OnInit } from '@angular/core';
 import { PlayerComponent } from "../player/player.component";
+import { PlayerService } from '../services/player.service';
 
 @Component({
   standalone: true,
@@ -18,6 +19,9 @@ export class GameScreenComponent implements OnInit{
   game!: Game;
   cardTaken = false;
   currentCard: string | undefined = "";
+
+  constructor(private playerservice: PlayerService){
+  }
 
   ngOnInit(){
     this.newGame();
@@ -39,13 +43,12 @@ export class GameScreenComponent implements OnInit{
     console.log(this.game.playedCards);
     }
     }, 1500);
-
   }
 
 
 
   newGame(){
-    this.game = new Game();
+    this.game = new Game(this.playerservice.players);
     console.log(this.game);
   }
 

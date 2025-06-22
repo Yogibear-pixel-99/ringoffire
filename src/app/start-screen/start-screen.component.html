@@ -1,6 +1,14 @@
 <section class="start-screen">
   <div>
     <img src="img/backgrounds/playing-card-161489_1280.png" alt="King Card" />
+    @if (players.length > 0) {
+    <div class="active-players">
+      <div class="player-header">Players:</div>
+      @for (player of players; track player;) {
+      <div class="single-player">{{ player }}</div>
+      }
+    </div>
+    }
     <img src="img/backgrounds/playing-card-161494_1280.png" alt="Queen Card" />
   </div>
   <div class="middle">
@@ -11,23 +19,32 @@
         src="img/buttons/button-7710125_640.png"
         alt="Start button"
       />
-      <span>Play!</span>
+      <span (click)="newGame()">Play!</span>
     </div>
     <span>by Joachim Pürcher</span>
   </div>
   <div>
     <img src="img/backgrounds/playing-card-161490_1280.png" alt="Queen Card" />
-    <div class="active-players">
+    <div class="add-wrapper">
+        @if (players.length < 5) {
       <button mat-mini-fab class="add-button" (click)="addPlayer()">
         <mat-icon>add</mat-icon>
       </button>
 
-      <div class="player-header">Players:</div>
-  <input [ngClass]="{'hidden' : newPlayers.length === 5}" [(ngModel)]="userInput" type="text" maxlength="15" name="playerNameInput" (input)="validateName()" (focus)="emptyInput()">
-
-
-      @for (player of newPlayers; track player;) {
-      <div>{{ player }}</div>
+      <div class="active-players width">
+        <input
+          [(ngModel)]="userInput"
+          type="text"
+          maxlength="15"
+          name="playerNameInput"
+          placeholder="enter your player name"
+          (input)="validateName()"
+          (focus)="emptyInput()"
+          (keypress.enter)="addPlayer()"
+        />
+      </div>
+      } @else {
+        <div class="active-players">Maximum of players reached</div>
       }
     </div>
     <img src="img/backgrounds/playing-card-161484_1280.png" alt="Jack Card" />

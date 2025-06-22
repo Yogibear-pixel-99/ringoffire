@@ -1,12 +1,12 @@
 export class Game {
-  public players: string[] = ['Steffi', 'Jenny', 'Markus', 'Carl', 'Hans', 'Alice'];
+  public players: string[] = [];
   public stack: string[] = [];
   public playedCards: {
     name: string,
     transform: string}[] = [];
   public currentPlayer: number = 0;
 
-  constructor() {
+  constructor(players: string[]) {
     for (let i = 1; i < 14; i++) {
       this.stack.push(`hearts_${i}`);
       this.stack.push(`diamonds_${i}`);
@@ -15,6 +15,7 @@ export class Game {
     }
 
     this.shuffle(this.stack);
+    this.players = players;
   }
 
   shuffle(array: string[]) {
