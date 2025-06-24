@@ -1,5 +1,6 @@
+@use "../styles/mixins.scss" as mixins;
+
 .game-field {
-//   position: relative;
   width: 100dvw;
   height: 100dvh;
   max-width: 100%;
@@ -36,7 +37,7 @@
 }
 
 .pick-card {
-  right: 25px;
+  right: 42px;
   bottom: 25px;
   animation: all 1250ms ease-in-out forwards;
   animation-name: pick-card-animation;
@@ -58,7 +59,17 @@
   z-index: -100;
 }
 
-.player {
+.player-field {
+  @include mixins.flex-content(center, center, column);
     position: absolute;
+    height: 100%;
     right: 0;
+    gap: 24px;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
 }

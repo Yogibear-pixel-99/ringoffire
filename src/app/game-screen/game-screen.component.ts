@@ -2,58 +2,62 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Game } from '../models/game';
 import { OnInit } from '@angular/core';
-import { PlayerComponent } from "../player/player.component";
+import { PlayerComponent } from '../player/player.component';
 import { PlayerService } from '../services/player.service';
+import { CardInfoComponent } from "../card-info/card-info.component";
 
 @Component({
   standalone: true,
   selector: 'app-game-screen',
-  imports: [CommonModule, PlayerComponent],
+  imports: [CommonModule, PlayerComponent, CardInfoComponent],
   templateUrl: './game-screen.component.html',
-  styleUrl: './game-screen.component.scss'
+  styleUrl: './game-screen.component.scss',
 })
-export class GameScreenComponent implements OnInit{
-
-
-
+export class GameScreenComponent implements OnInit {
   game!: Game;
   cardTaken = false;
-  currentCard: string | undefined = "";
+  currentCard: string = '';
 
-  constructor(private playerservice: PlayerService){
-  }
+  constructor(private playerservice: PlayerService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.newGame();
   }
 
-  takeCard(){
+  takeCard() {
     if (this.game.stack.length === 0 || this.cardTaken) return;
-    this.currentCard = this.game.stack.pop() || undefined;
-    
+    if (this.game.stack.length > 0) {
+    this.currentCard = this.game.stack.pop() || '';
+    }
     this.cardTaken = true;
     setTimeout(() => {
-      this.cardTaken = false
+      this.cardTaken = false;
       if (this.currentCard !== undefined) {
-    this.game.playedCards.push({
-      name : this.currentCard,
-      transform: this.calculatePlayedCardPos()
-    });
-          console.log(this.currentCard);
-    console.log(this.game.playedCards);
-    }
+        this.game.playedCards.push({
+          name: this.currentCard,
+          transform: this.calculatePlayedCardPos(),
+        });
+      }
     }, 1500);
   }
 
+  nextPlayer(){
+    setTimeout(() => {
+    if (this.game.currentPlayer === this.game.players.length - 1) {
+      this.game.currentPlayer = 0;
+    } else {
+    this.game.currentPlayer++;
+  }}, 1500);
+}
 
-
-  newGame(){
+  newGame() {
     this.game = new Game(this.playerservice.players);
     console.log(this.game);
   }
 
-  calculatePlayedCardPos(){
-   return `scale(1) translate(${this.game.playedCards.length * 2}px, -300px) rotate(${Math.ceil(Math.random() * 360)}deg)`
-}
-
+  calculatePlayedCardPos() {
+    return `scale(1) translate(${
+      this.game.playedCards.length * 2
+    }px, -300px) rotate(${Math.ceil(Math.random() * 360)}deg)`;
+  }
 }

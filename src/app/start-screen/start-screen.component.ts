@@ -11,13 +11,20 @@ import { PlayerService } from '../services/player.service';
 @Component({
   standalone: true,
   selector: 'app-start-screen',
-  imports: [MatButtonModule, MatIconModule, MatDividerModule, MatInputModule, CommonModule, FormsModule],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatInputModule,
+    CommonModule,
+    FormsModule,
+  ],
   templateUrl: './start-screen.component.html',
   styleUrl: './start-screen.component.scss',
 })
 export class StartScreenComponent {
-  players: string[] = []
-  userInput:string = '';
+  players: string[] = [];
+  userInput: string = '';
   hidden = false;
 
   constructor(private router: Router, private playerservice: PlayerService) {
@@ -28,38 +35,43 @@ export class StartScreenComponent {
     this.router.navigate(['/game']);
   }
 
-  validateName(){
-    const regEx = /[^A-Z0-9\s]/ig;
+  validateName() {
+    const regEx = /[^A-Z0-9\s]/gi;
     this.userInput = this.userInput.replace(regEx, '');
   }
 
-  addPlayer(){
-    if (this.playerservice.players.length > 5 || this.userInput.length === 0) return;
-
-
-
-    if (this.playerservice.players.length < 5) {
-      if (!this.checkIfPlayerExists()) {
-    this.playerservice.players.push(this.userInput.trim());
-    this.emptyInput();
-      } else {
-        this.userInput = 'Player already exists';
-      }
-    } else {
-      this.userInput = 'Maximum of players reached!';
+  addEnter(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.addPlayer();
     }
-    console.log(this.playerservice);
   }
 
-  checkIfPlayerExists(){
-    return this.playerservice.players.some((name: string) => this.userInput === name);
-}
+  addPlayer() {
+    if (
+      this.playerservice.players.length > 5 ||
+      this.userInput.length === 0 ||
+      this.userInput === 'Player already exists'
+    )
+      return;
+    if (!this.checkIfPlayerExists()) {
+      this.playerservice.players.push(this.userInput.trim());
+      this.emptyInput();
+    } else {
+      this.userInput = 'Player already exists';
+    }
+  }
 
-emptyInput(){
-  this.userInput = ''
-}
+  checkIfPlayerExists() {
+    return this.playerservice.players.some(
+      (name: string) => this.userInput === name
+    );
+  }
 
-toggleContainer(){
-  this.hidden = !this.hidden;
-}
+  emptyInput() {
+    this.userInput = '';
+  }
+
+  toggleContainer() {
+    this.hidden = !this.hidden;
+  }
 }

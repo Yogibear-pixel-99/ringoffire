@@ -129,6 +129,7 @@ input {
 
 .add-wrapper {
     @include mixins.flex-content(center, center, column);
+    align-self: flex-end;
 }
 
 .single-player {

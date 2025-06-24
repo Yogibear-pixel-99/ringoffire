@@ -9,10 +9,6 @@ export class PlayerService {
 
   constructor() { }
 
-  // setPlayers(data: string[]){
-  //   this.players = data;
-  // }
-
   getPlayers(): string[]{
     return this.players;
   }

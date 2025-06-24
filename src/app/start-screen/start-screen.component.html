@@ -40,7 +40,7 @@
           placeholder="enter your player name"
           (input)="validateName()"
           (focus)="emptyInput()"
-          (keypress.enter)="addPlayer()"
+          (keypress)="addEnter($event)"
         />
       </div>
       } @else {

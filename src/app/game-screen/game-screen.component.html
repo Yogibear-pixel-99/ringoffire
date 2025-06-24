@@ -1,27 +1,47 @@
-@for (player of game.players; track player; let i = $index) {
-<app-player class="player" [playerName]="player" [ngStyle]="{'top.px' : 130 + 150 * i}"></app-player>
-}
-
-<section  class="game-field">
-    <div>
-    @if (game.stack.length > 5) {
-        @for (card of [0,1,2,3,4]; track card; let i = $index){
-            <img [ngStyle]="{'right.px' : i * 5, 'bottom.px' : i * 5}" src="img/cards/card_cover.png" alt="card cover">
-    }} @else {
-            @for (card of game.stack; track card; let i = $index) {
-            <img [ngStyle]="{'right.px' : i * 5, 'bottom.px' : i * 5}" src="img/cards/card_cover.png" alt="card cover">
-        }
+<div class="player-field">
+  @for (player of game.players; track player; let i = $index) {
+  <app-player
+    class="player"
+    [playerName]="player"
+    [playerActive]="i === game.currentPlayer"
+  ></app-player>
+  }
+</div>
+<section class="game-field">
+  <div>
+    @if (game.stack.length > 5) { @for (card of [0,1,2,3,4]; track card; let i =
+    $index){
+    <img
+      [ngStyle]="{ 'right.px': i * 5, 'bottom.px': i * 5 }"
+      src="img/cards/card_cover.png"
+      alt="card cover"
+    />
+    }} @else { @for (card of game.stack; track card; let i = $index) {
+    <img
+      [ngStyle]="{ 'right.px': i * 5, 'bottom.px': i * 5 }"
+      src="img/cards/card_cover.png"
+      alt="card cover"
+    />
+    } } @if (game.stack.length > 0) {
+    <img
+      (click)="takeCard(); calculatePlayedCardPos(); nextPlayer()"
+      class="last-card"
+      src="img/cards/card_cover.png"
+      alt="card cover"
+    />
+    } @if (cardTaken){
+    <img
+      class="pick-card"
+      src="img/cards/{{ currentCard }}.png"
+      alt="card cover"
+    />
+    } @for (card of game.playedCards; track card.name; let i = $index) {
+    <img
+      class="played-card"
+      src="img/cards/{{ card.name }}.png"
+      [ngStyle]="{ transform: card.transform }"
+    />
     }
-    
-    @if (game.stack.length > 0) {
-        <img (click)="takeCard(); calculatePlayedCardPos()" class="last-card" src="img/cards/card_cover.png" alt="card cover">
-    }
-    @if (cardTaken){
-        <img class="pick-card" src="img/cards/{{ currentCard }}.png" alt="card cover">
-    }
-
-    @for (card of game.playedCards; track card.name; let i = $index) {
-        <img class="played-card" src="img/cards/{{ card.name }}.png" [ngStyle]="{'transform' : card.transform}">
-    }
-    </div>
+</div>
+<app-card-info [card]="currentCard" class="card-info"></app-card-info>
 </section>
