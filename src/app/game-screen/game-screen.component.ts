@@ -43,16 +43,13 @@ export class GameScreenComponent implements OnInit {
 
   nextPlayer(){
     setTimeout(() => {
-    if (this.game.currentPlayer === this.game.players.length - 1) {
-      this.game.currentPlayer = 0;
-    } else {
     this.game.currentPlayer++;
-  }}, 1500);
+    this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+  }, 1500);
 }
 
   newGame() {
     this.game = new Game(this.playerservice.players);
-    console.log(this.game);
   }
 
   calculatePlayedCardPos() {

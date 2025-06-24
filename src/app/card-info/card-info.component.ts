@@ -41,7 +41,6 @@ export class CardInfoComponent implements OnInit, OnChanges {
   const cardIndex = +this.card.split("_")[1];
   this.title = this.cardAction[cardIndex - 1].title;
   this.description = this.cardAction[cardIndex - 1].description;
-  console.log(cardIndex);
  }, 1500);
  }
 }

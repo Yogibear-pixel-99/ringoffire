@@ -22,6 +22,10 @@
 
     > img {
       width: 160px;
+
+      @media (max-width: 900px) {
+      width: 20%;
+}
     }
   }
 
@@ -35,7 +39,6 @@
     transform: translate(-50%, -50%);
     justify-content: center;
     @include mixins.flex-content(center, center, column);
-    gap: 20px;
     background-color: #FCFDE7;
     width: auto;
     padding: 20px;
@@ -52,7 +55,7 @@
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 48px;
     font-weight: 400;
     margin: 0;
 }
@@ -66,12 +69,12 @@ span {
     @include mixins.flex-content();
 
     > span {
-        font-size: 28px;
+        font-size: 24px;
        @include mixins.absolute-center();
     }
 
     > img {
-        width: 400px;
+        width: 300px;
     }
 }
 
@@ -83,11 +86,11 @@ span {
     align-self: flex-start;
     margin-top: 20px;
     border-radius: 12px;
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
 
-    > span {
-        font-size: 18px;
+    > .single-player {
+        font-size: 20px;
     }
 
 
@@ -96,10 +99,6 @@ span {
 .add-button {
     background-color: #ffdbdb;
     color: black;
-}
-
-.player-header {
-    font-size: 26px;
 }
 
 input {
@@ -139,3 +138,4 @@ input {
 .width {
     width: 300px;
 }
+

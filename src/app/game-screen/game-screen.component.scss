@@ -14,7 +14,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-70%, -60%);
+    transform: translate(-90%, -55%);
     width: 300px;
     height: 500px;
 
@@ -62,7 +62,7 @@
 .player-field {
   @include mixins.flex-content(center, center, column);
     position: absolute;
-    height: 100%;
+    height: 80%;
     right: 0;
     gap: 24px;
 }
