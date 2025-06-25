@@ -3,7 +3,6 @@
     <img src="img/backgrounds/playing-card-161489_1280.png" alt="King Card" />
     @if (players.length > 0) {
     <div class="active-players">
-      <div>Players:</div>
       @for (player of players; track player;) {
       <div class="single-player">{{ player }}</div>
       }
