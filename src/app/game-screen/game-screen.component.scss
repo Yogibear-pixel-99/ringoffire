@@ -22,6 +22,11 @@
       width: 120px;
       position: absolute;
     }
+
+    @media (max-width: 800px) {
+      left: 20px;
+      transform: translate(-40%, -65%);
+    }
   }
 }
 
@@ -43,28 +48,37 @@
   animation-name: pick-card-animation;
 }
 
-@keyframes pick-card-animation{
-0%{transform: scale(1);}
+@keyframes pick-card-animation {
+  0% {
+    transform: scale(1);
+  }
 
-40%{transform: scale(1.7);}
+  40% {
+    transform: scale(1.7);
+  }
 
-60%{transform: scale(1.7);}
+  60% {
+    transform: scale(1.7);
+  }
 
-100%{transform: scale(1) translate(50px, -300px) rotate(20deg);}
+  100% {
+    transform: scale(1) translate(50px, -300px) rotate(20deg);
+  }
 }
 
 .played-card {
-      right: 25px;
+  right: 25px;
   bottom: 25px;
   z-index: -100;
 }
 
 .player-field {
   @include mixins.flex-content(center, center, column);
-    position: absolute;
-    height: 80%;
-    right: 0;
-    gap: 24px;
+  position: absolute;
+  height: 80%;
+  right: 0;
+  gap: 24px;
+  z-index: 1;
 }
 
 .card-info {
@@ -72,4 +86,25 @@
   bottom: 40px;
   left: 40px;
   right: 40px;
+
+  @media (max-height: 700px) {
+    bottom: 0;
+  }
+}
+
+.turn-mask {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.99);
+  color: #fca728;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-family: rubik, sans-serif;
+  font-size: 22px;
+
+  @media (max-height: 520px) and (orientation: landscape) {
+    display: flex;
+  }
 }

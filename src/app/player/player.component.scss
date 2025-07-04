@@ -11,11 +11,30 @@
   width: 330px;
   border-radius: 65px 0 0 65px;
 
+  > span {
+      @media (max-width: 600px) {
+        font-size: 14px;
+  }
+  }
+
   > img {
     height: 52px;
     padding: 14px;
     background-color: wheat;
     border-radius: 50%;
+
+      @media (max-width: 600px) {
+    display: none;
+  }
+  }
+
+  @media (max-width: 600px) {
+    width: 180px;
+    height: 40px;
+  }
+
+  @media (max-height: 700px) {
+    height: 40px;
   }
 }
 
@@ -34,5 +53,10 @@
     padding: 14px;
     background-color: wheat;
     border-radius: 50%;
+  }
+
+    @media (max-width: 600px) {
+    width: 180px;
+    height: 60px;
   }
 }

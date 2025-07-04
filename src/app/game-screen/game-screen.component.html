@@ -29,10 +29,10 @@
       src="img/cards/card_cover.png"
       alt="card cover"
     />
-    } @if (cardTaken){
+    } @if (game.cardTaken){
     <img
       class="pick-card"
-      src="img/cards/{{ currentCard }}.png"
+      src="img/cards/{{ game.currentCard }}.png"
       alt="card cover"
     />
     } @for (card of game.playedCards; track card.name; let i = $index) {
@@ -43,5 +43,6 @@
     />
     }
 </div>
-<app-card-info [card]="currentCard" class="card-info"></app-card-info>
+<app-card-info [card]="game.currentCard" class="card-info"></app-card-info>
 </section>
+<section class="turn-mask">Turn your device</section>

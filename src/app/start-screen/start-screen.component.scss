@@ -15,15 +15,33 @@
   overflow: hidden;
   @include mixins.flex-content(space-between, center, column);
 
+        @media (max-height: 800px) {
+        padding: 20px;
+      }
+
+        @media (max-height: 500px) {
+        > div:nth-child(1) {
+          display: none;
+        }
+      }
+
   > div {
     width: 100%;
     @include mixins.flex-content(space-between, center);
+
+    @media (max-width: 750px) {
+      justify-content: center;
+    }
 
     > img {
       width: 160px;
 
       @media (max-width: 900px) {
         width: 20%;
+      }
+
+      @media (max-width: 750px) {
+        display: none;
       }
     }
   }
@@ -50,17 +68,25 @@
     &:hover .play-wrapper {
       filter: brightness(120%);
     }
-  }
 
-   @media (max-width: 700px){
-        
-    }
+      @media (max-height: 500px) {
+    position: absolute;
+    top: 160px;
+  }
+  }
 }
 
 h1 {
   font-size: 48px;
   font-weight: 400;
   margin: 0;
+
+  @media (max-height: 800px) {
+    font-size: 30px;
+  }
+  @media (max-width: 350px) {
+    font-size: 30px;
+  }
 }
 
 span {
@@ -78,6 +104,10 @@ span {
 
   > img {
     width: 300px;
+
+    @media (max-width: 350px) {
+      width: 250px;
+    }
   }
 }
 
@@ -90,6 +120,10 @@ span {
   border-radius: 12px;
   font-size: 20px;
   text-align: center;
+
+        @media (max-height: 800px) {
+        display: none;
+      }
 
   > .single-player {
     font-size: 20px;
@@ -137,4 +171,15 @@ input {
 
 .width {
   width: 300px;
+}
+
+.show {
+  display: block;
+
+      @media (max-height: 500px) {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 }

@@ -46,8 +46,6 @@ export class StartScreenComponent {
     } catch (error) {
       console.error ("Error creating game: ", error);
     }
-  
-    
   }
 
   validateName() {
