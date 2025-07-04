@@ -18,7 +18,7 @@ export class Game {
     this.players = players;
   }
 
-  shuffle(array: string[]) {
+  private shuffle(array: string[]) {
     let currentIndex = array.length;
 
     while (currentIndex != 0) {
@@ -29,6 +29,15 @@ export class Game {
         array[randomIndex],
         array[currentIndex],
       ];
+    }
+  }
+
+  public toJson(){
+    return {
+      players: this.players,
+      stack: this.stack,
+      playedCards: this.playedCards,
+      currentPlayer: this.currentPlayer
     }
   }
 }

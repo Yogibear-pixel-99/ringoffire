@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
@@ -10,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ringoffire';
+constructor (){}
+
 }
